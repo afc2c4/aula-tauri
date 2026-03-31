@@ -1,4 +1,4 @@
-# Módulo 1: Montando o Projeto — Fundamentos, Arquitetura e Bootstrap do Tauri
+# Módulo 1: Passo 1 — Criando a Base do Projeto Tauri
 
 Arquivos analisados:
 
@@ -9,29 +9,34 @@ Arquivos analisados:
 - `todo-tauri/src-tauri/Cargo.toml`
 - `todo-tauri/src-tauri/src/lib.rs`
 
-## Leitura do pedido, pontos que podem ser seguidos e ambiguidades
+## O que você monta neste passo
 
-### O que dá para seguir com clareza
+Se a ideia é reconstruir o projeto inteiro do zero, o primeiro passo não é sair escrevendo regra de negócio nem mexendo no DOM. O primeiro passo é entender a base que permite o app existir.
 
-- Voltar e gerar agora o **Módulo 1**.
-- Manter a continuidade didática dos módulos já existentes.
-- Preservar o formato já usado:
-  - trecho do código
-  - explicação
-  - trecho do código
-  - explicação
-- Salvar o material em um arquivo `.md` dentro do repositório.
+Neste módulo, você monta mentalmente a fundação do projeto:
 
-### Ambiguidades práticas
+- como o frontend é construído;
+- como o Tauri entra no fluxo;
+- como o backend Rust participa da aplicação;
+- e qual é a estrutura mínima que precisa estar de pé antes dos próximos passos.
 
-1. O pedido não diz explicitamente qual arquivo deveria representar o “Módulo 1”.
-   - **Decisão tomada:** tratar o Módulo 1 como a base conceitual do projeto, cobrindo os arquivos que explicam a arquitetura, o bootstrap e o fluxo de build do Tauri.
+Em outras palavras:
 
-2. Os módulos 2, 3 e 4 focam arquivos únicos, mas um módulo introdutório faz mais sentido como leitura transversal entre frontend, configuração e backend.
-   - **Decisão tomada:** este módulo usa múltiplos arquivos e assume o papel de introdução geral antes do mergulho em `main.rs`, `main.ts` e `index.html`.
+> antes de montar a interface,  
+> antes de registrar comandos,  
+> e antes de ligar tudo com o TypeScript,  
+> é preciso saber como o projeto Tauri nasce e como essas peças convivem.
 
-3. O repositório contém tanto `src-tauri/src/lib.rs` quanto `src-tauri/src/main.rs`, mas os módulos seguintes já analisam `main.rs`.
-   - **Decisão tomada:** usar `lib.rs` neste módulo como exemplo do template/base do Tauri e posicionar `main.rs` como evolução posterior explicada no Módulo 2.
+---
+
+## Onde este passo entra na sequência
+
+Para refazer este app como um passo a passo, a ordem didática fica assim:
+
+1. **Módulo 1** — criar a base, entender a arquitetura e o bootstrap do Tauri;
+2. **Módulo 2** — montar o HTML, o DOM e a casca da interface;
+3. **Módulo 3** — blindar o backend Rust com comandos IPC e estado global;
+4. **Módulo 4** — ligar o frontend TypeScript ao DOM e ao backend para chegar no app final.
 
 ---
 
@@ -81,19 +86,6 @@ Ou, de forma ainda mais direta:
 > o frontend desenha,  
 > o Tauri conecta,  
 > e o Rust controla.
-
----
-
-## Onde este módulo entra na sequência
-
-A ordem didática natural agora fica assim:
-
-1. **Módulo 1** — fundamentos, arquitetura, toolchain e bootstrap do Tauri;
-2. **Módulo 2** — backend Rust, comandos IPC e estado global;
-3. **Módulo 3** — frontend TypeScript, `invoke` e renderização;
-4. **Módulo 4** — HTML, DOM e montagem da interface.
-
-Sem este módulo introdutório, os demais já começam no meio da história.
 
 ---
 
@@ -176,7 +168,7 @@ Aqui aparece a primeira pista de que este projeto é híbrido.
 
 É a biblioteca usada pelo frontend para conversar com o runtime Tauri.
 
-Mais à frente, no Módulo 3, é exatamente dela que vem o `invoke`.
+Mais à frente, no Módulo 4, é exatamente dela que vem o `invoke`.
 
 #### `@tauri-apps/plugin-opener`
 
@@ -633,7 +625,7 @@ E serialização é peça-chave para IPC, porque:
 - o backend responde;
 - tudo isso precisa atravessar uma fronteira de representação.
 
-Mesmo antes de entrar no Módulo 2, esse detalhe já prepara o terreno conceitual.
+Mesmo antes de chegar aos Módulos 3 e 4, esse detalhe já prepara o terreno conceitual.
 
 #### `rand`
 
@@ -664,7 +656,7 @@ Mesmo que a aplicação real de tarefas tenha evoluído em `main.rs`, o `lib.rs`
 - chamar esse comando a partir do frontend;
 - devolver uma resposta serializável.
 
-Esse pequeno exemplo já contém, em miniatura, a lógica que depois cresce no Módulo 2:
+Esse pequeno exemplo já contém, em miniatura, a lógica que depois cresce no Módulo 3:
 
 - em vez de `greet`, surgem comandos reais;
 - em vez de resposta simples, surgem listas de tarefas;
@@ -729,16 +721,16 @@ Falha de forma explícita se a aplicação não conseguir iniciar.
 
 Depois deste módulo, a leitura dos demais fica muito mais clara:
 
-- o **Módulo 2** pega o builder e mostra como ele foi adaptado para carregar estado global e registrar comandos reais;
-- o **Módulo 3** mostra o frontend usando `invoke` para conversar com esses comandos;
-- o **Módulo 4** mostra o HTML que fornece a estrutura física para a interface renderizada.
+- o **Módulo 2** monta a estrutura HTML e o contrato do DOM;
+- o **Módulo 3** pega o builder e mostra como ele foi adaptado para carregar estado global e registrar comandos reais;
+- o **Módulo 4** mostra o frontend usando `invoke` para conversar com esses comandos.
 
 Ou seja:
 
 - este módulo apresenta a **infraestrutura**;
-- o Módulo 2 apresenta o **núcleo nativo de negócio**;
-- o Módulo 3 apresenta o **cliente visual desse núcleo**;
-- o Módulo 4 apresenta o **palco estrutural da UI**.
+- o Módulo 2 apresenta o **palco estrutural da UI**;
+- o Módulo 3 apresenta o **núcleo nativo de negócio**;
+- o Módulo 4 apresenta o **cliente visual desse núcleo**.
 
 ---
 

@@ -1,39 +1,24 @@
-# Módulo 2: Montando o Projeto — Backend Rust, IPC e Estado Global
+# Módulo 3: Passo 3 — Blindando o Backend Rust com IPC e Estado Global
 
 Arquivo analisado: `todo-tauri/src-tauri/src/main.rs`
 
-## Leitura do pedido, pontos que podem ser seguidos e ambiguidades
+## O que você monta neste passo
 
-### O que dá para seguir com clareza
+Com a base do projeto pronta e a estrutura da interface já definida, agora entra a parte que dá autoridade real ao app: o backend Rust.
 
-- Gerar agora apenas o **Módulo 2**.
-- Criar uma branch chamada **`explain`**.
-- Colocar a explicação em um arquivo **`.md`** dentro do repositório.
-- Explicar o arquivo `main.rs` com foco em:
-  - `#[tauri::command]`
-  - IPC
-  - `State`
-  - `Mutex`
-  - proteção contra **data races**
-  - fundamentos de processo, isolamento e memória.
+Neste passo, você monta a camada nativa que:
 
-### Ambiguidades reais do pedido
+- registra os comandos que a UI poderá chamar;
+- guarda o estado autoritativo da aplicação;
+- sincroniza o acesso concorrente à lista de tarefas;
+- e transforma o app em algo além de “uma tela com formulário”.
 
-1. O pedido original exigia **“o arquivo completo na íntegra”**, mas o novo pedido pediu a estrutura **“trecho do código + explicação + trecho do código + explicação”** até o fim.
-   - **Decisão tomada:** seguir o pedido mais recente no Markdown, cobrindo o arquivo inteiro em ordem, por blocos sequenciais.
+Em termos de passo a passo:
 
-2. O pedido disse para criar uma branch `explain`, mas não especificou se isso deveria ser apenas **localmente** ou também publicado no remoto.
-   - **Decisão tomada:** criar a branch local `explain`; o versionamento remoto depende do fluxo de commit/push do ambiente.
+> o Módulo 2 desenhou onde a interface existe;  
+> este módulo define onde o estado verdadeiro mora.
 
-3. O pedido não especificou onde o `.md` deveria ficar.
-   - **Decisão tomada:** salvar o material dentro de `todo-tauri/`, ao lado do projeto documentado.
-
-4. Há uma pequena ambiguidade de arquitetura no repositório: existe um `src-tauri/src/lib.rs` ainda muito próximo do template padrão do Tauri, mas o arquivo pedido para análise é `src-tauri/src/main.rs`.
-   - **Decisão tomada:** este módulo foca rigorosamente em `main.rs`, mas menciona nas diferenças que o template original ainda aparece em `lib.rs` como vestígio histórico.
-
----
-
-## A Arquitetura
+## A arquitetura deste passo
 
 O desenho do seu backend segue uma ideia muito sólida para ensino: o frontend não manipula estado crítico; ele só envia comandos. O estado verdadeiro vive no lado Rust, na memória do processo nativo, e é protegido por tipos e sincronização.
 
@@ -61,7 +46,7 @@ Essa arquitetura é boa para iniciantes porque mostra, sem banco de dados e sem 
 
 ---
 
-## A Diferença em relação ao template vazio do Tauri
+## O que muda em relação ao template vazio do Tauri
 
 Saindo do template para o seu código final, a mudança é profunda:
 
@@ -505,7 +490,7 @@ Se a aplicação falhar ao subir, o processo aborta com uma mensagem clara. Para
 
 ---
 
-## Fechamento conceitual do Módulo 2
+## Fechamento conceitual do Módulo 3
 
 O `main.rs` mostra uma arquitetura pequena, mas extremamente rica para ensinar fundamentos:
 

@@ -1,35 +1,22 @@
-# Módulo 4: Montando o Projeto — HTML, DOM e Casca da Interface
+# Módulo 2: Passo 2 — Montando o HTML, o DOM e a Estrutura da Interface
 
 Arquivo analisado: `todo-tauri/index.html`
 
-## Leitura do pedido, pontos que podem ser seguidos e ambiguidades
+## O que você monta neste passo
 
-### O que dá para seguir com clareza
+Depois de entender a base do projeto, o próximo passo é construir a casca visível da aplicação.
 
-- Gerar o próximo material como continuação dos módulos anteriores.
-- Manter o mesmo formato didático:
-  - trecho do código
-  - explicação
-  - trecho do código
-  - explicação
-- Salvar o conteúdo em um arquivo `.md` dentro do repositório.
+Neste módulo, o foco não é ainda a lógica de negócio. O foco é deixar pronta a estrutura física sobre a qual o restante do app vai operar.
 
-### Ambiguidades práticas
+Aqui você monta:
 
-1. O pedido diz “gerar o módulo 4”, mas não diz explicitamente qual arquivo deve ser o foco.
-   - **Decisão tomada:** usar `todo-tauri/index.html` como foco principal, porque o Módulo 2 já cobriu o backend Rust e o Módulo 3 já cobriu o `main.ts`.
-
-2. O repositório também possui `todo-tauri/src/styles.css`, mas o HTML atual já carrega estilos inline e o `main.ts` não importa esse CSS.
-   - **Decisão tomada:** manter o foco no `index.html`, mencionando `styles.css` apenas como contexto arquitetural secundário.
-
-3. O arquivo mistura estrutura HTML, CSS inline e scripts externos.
-   - **Decisão tomada:** explicar o arquivo em ordem e destacar como essas três camadas convivem dentro da mesma casca de entrada.
-
----
+- o documento HTML inicial;
+- os `id`s que servirão de contrato para o frontend;
+- o formulário de entrada;
+- a área de renderização da lista;
+- e a casca visual que o TypeScript e o Rust vão completar nos próximos passos.
 
 ## A ideia central deste módulo
-
-Se o Módulo 3 mostrou **como o TypeScript reage aos eventos**, este módulo mostra **de onde esses eventos nascem**.
 
 O `index.html` é a casca inicial da interface:
 
@@ -55,18 +42,16 @@ Em outras palavras:
 
 ---
 
-## O papel arquitetural do HTML neste projeto
+## O papel deste passo na sequência
 
-Num projeto pequeno como este, é fácil subestimar o HTML e tratá-lo como “só marcação”.
-
-Mas aqui ele tem uma função estrutural importante:
+Num projeto pequeno como este, é fácil subestimar o HTML e tratá-lo como “só marcação”, mas neste passo ele cumpre uma função estrutural importante:
 
 - ele fixa os pontos de entrada do JavaScript;
 - organiza a hierarquia visual da tela;
 - delimita o espaço onde o backend será representado;
 - serve como “superfície de acoplamento” entre UI declarativa e comportamento imperativo.
 
-O TypeScript do Módulo 3 depende totalmente de três `id`s:
+O TypeScript do Módulo 4 depende totalmente de três `id`s:
 
 - `todo-form`
 - `task-input`
@@ -271,7 +256,7 @@ Cada item de tarefa é estilizado como um bloco escuro, com:
 - layout flexível;
 - alinhamento horizontal entre texto e botão.
 
-Isso conversa diretamente com o que o Módulo 3 mostrou:
+Isso prepara diretamente o que o Módulo 4 vai mostrar:
 
 - o TypeScript cria um `<li>`;
 - cria um `<span>`;
@@ -369,7 +354,7 @@ Este é o coração estático da interface.
 
 Esse `id` é um contrato direto com o `main.ts`.
 
-No módulo anterior, vimos:
+Mais adiante, no Módulo 4, veremos:
 
 ```ts
 const form = document.getElementById("todo-form") as HTMLFormElement;
@@ -496,19 +481,16 @@ Arquiteturalmente, o fluxo real da app depende de:
 - TypeScript;
 - `invoke` do Tauri.
 
-Ou seja, jQuery não faz parte do núcleo funcional apresentado pelos módulos anteriores.
+Ou seja, jQuery não faz parte do núcleo funcional apresentado no caminho principal deste app.
 
 ---
 
-## A relação entre este módulo e o Módulo 3
+## Como este módulo prepara os Módulos 3 e 4
 
-O Módulo 3 mostrou:
+Depois deste módulo:
 
-- captura do formulário;
-- leitura do input;
-- renderização da lista;
-- exclusão por índice;
-- chamadas IPC com `invoke`.
+- o **Módulo 3** blinda o estado no Rust e registra os comandos IPC;
+- o **Módulo 4** captura `todo-form`, `task-input` e `task-list` para ligar a interface ao backend.
 
 Este módulo mostra de onde vêm os alvos dessa lógica:
 
@@ -516,7 +498,7 @@ Este módulo mostra de onde vêm os alvos dessa lógica:
 - `task-input`
 - `task-list`
 
-Sem o HTML, o TypeScript não teria pontos de ancoragem. Sem o TypeScript, o HTML seria apenas uma casca estática. Os dois lados dependem do mesmo contrato de nomes e estrutura.
+Sem o HTML, o frontend não teria pontos de ancoragem. Sem backend e frontend, o HTML seria apenas uma casca estática. Os três lados dependem do mesmo contrato de nomes e estrutura.
 
 ---
 
@@ -534,7 +516,7 @@ Esse tipo de coexistência é comum em projetos em evolução: nem todo arquivo 
 
 ---
 
-## Fechamento conceitual do Módulo 4
+## Fechamento conceitual do Módulo 2
 
 O `index.html` é o chão físico da UI.
 

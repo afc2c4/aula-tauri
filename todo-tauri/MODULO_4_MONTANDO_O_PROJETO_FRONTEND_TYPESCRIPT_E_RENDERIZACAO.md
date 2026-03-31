@@ -1,36 +1,27 @@
-# Módulo 3: Montando o Projeto — Frontend TypeScript, `invoke` e Renderização
+# Módulo 4: Passo 4 — Ligando o Frontend TypeScript e Finalizando o App
 
 Arquivo analisado: `todo-tauri/src/main.ts`
 
-## Leitura do pedido, pontos que podem ser seguidos e ambiguidades
+## O que você monta neste passo
 
-### O que dá para seguir com clareza
+Este é o passo em que a aplicação finalmente fecha o circuito completo.
 
-- Gerar o próximo conteúdo como continuação natural do material anterior.
-- Explicar o arquivo inteiro em ordem.
-- Manter o formato pedido:
-  - trecho do código
-  - explicação
-  - trecho do código
-  - explicação
-- Colocar o conteúdo em um arquivo `.md` dentro do repositório.
+Depois de:
 
-### Ambiguidades práticas
+- criar a base do projeto no Módulo 1;
+- montar a estrutura HTML no Módulo 2;
+- blindar o backend Rust no Módulo 3;
 
-1. A resposta “pode sim” confirma a continuação, mas não nomeia explicitamente “Módulo 3”.
-   - **Decisão tomada:** tratar a continuação como **Módulo 3**, focado no `main.ts`, porque o Módulo 2 já cobriu o backend em Rust.
+o `main.ts` entra para ligar tudo:
 
-2. O pedido inicial falava em “arquivo completo na íntegra”, enquanto a forma mais recente pediu intercalar blocos e explicações até o fim.
-   - **Decisão tomada:** manter a explicação sequencial por blocos, cobrindo o arquivo inteiro em ordem.
-
-3. O pedido não definiu se o foco do módulo deveria ser DOM, eventos, IPC ou fluxo completo.
-   - **Decisão tomada:** cobrir os quatro pontos, com ênfase em como o frontend conversa com o backend via `invoke`.
-
----
+- captura os eventos do formulário;
+- chama os comandos IPC;
+- recebe snapshots atualizados;
+- e redesenha a lista na interface.
 
 ## A ideia central deste módulo
 
-Se o Módulo 2 mostrou **onde o estado mora**, este módulo mostra **quem pede mudanças nesse estado**.
+Se o Módulo 2 montou o palco do DOM e o Módulo 3 blindou o estado no Rust, este módulo mostra **quem conecta as duas pontas e faz o app acontecer**.
 
 No seu projeto:
 
@@ -517,7 +508,7 @@ Esse detalhe é central:
 
 ---
 
-## Fechamento conceitual do Módulo 3
+## Fechamento conceitual do Módulo 4
 
 O `main.ts` ensina muito mais do que manipulação de DOM. Ele mostra, de forma pequena e direta, o fluxo completo de uma interface cliente de um core nativo:
 
