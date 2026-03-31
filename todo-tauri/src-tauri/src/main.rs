@@ -29,14 +29,27 @@ fn carregar_tarefas(state: State<'_, AppState>) -> Result<Vec<String>, String> {
     Ok(lista.clone())
 }
 
+// 4. Remove uma tarefa pelo indice para suportar textos duplicados
+#[tauri::command]
+fn remover_tarefa(indice: usize, state: State<'_, AppState>) -> Result<Vec<String>, String> {
+    let mut lista = state.tarefas.lock().map_err(|_| "Falha ao adquirir o lock do Mutex")?;
+
+    if indice >= lista.len() {
+        return Err("Indice de tarefa invalido".to_string());
+    }
+
+    lista.remove(indice);
+    Ok(lista.clone())
+}
+
 fn main() {
     tauri::Builder::default()
-        // 4. Injetamos o estado inicial na "mochila" do Tauri ao dar o boot
+        // 5. Injetamos o estado inicial na "mochila" do Tauri ao dar o boot
         .manage(AppState {
             tarefas: Mutex::new(Vec::new()),
         })
         // Registramos os novos comandos IPC
-        .invoke_handler(tauri::generate_handler![adicionar_tarefa, carregar_tarefas])
+        .invoke_handler(tauri::generate_handler![adicionar_tarefa, carregar_tarefas, remover_tarefa])
         .run(tauri::generate_context!())
         .expect("Erro fatal: Falha ao iniciar o Tauri");
 }

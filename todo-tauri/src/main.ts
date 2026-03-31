@@ -32,9 +32,26 @@ form.addEventListener("submit", async (e) => {
 
 function renderizarLista(tarefas: string[]) {
   list.innerHTML = ""; // Limpa o DOM antes de redesenhar
-  tarefas.forEach(t => {
+  tarefas.forEach((t, indice) => {
     const li = document.createElement("li");
-    li.textContent = t;
+
+    const texto = document.createElement("span");
+    texto.textContent = t;
+
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.type = "button";
+    botaoExcluir.textContent = "X";
+    botaoExcluir.className = "delete-task";
+    botaoExcluir.addEventListener("click", async () => {
+      try {
+        const tarefasAtualizadas = await invoke<string[]>("remover_tarefa", { indice });
+        renderizarLista(tarefasAtualizadas);
+      } catch (erro) {
+        console.error("Erro ao remover tarefa:", erro);
+      }
+    });
+
+    li.append(texto, botaoExcluir);
     list.appendChild(li);
   });
 }
