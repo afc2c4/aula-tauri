@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List Blindado</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    input,
+    button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #333;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Tarefas</h1>
+    <form id="todo-form">
+      <input type="text" id="task-input" placeholder="O que precisa ser feito?" required />
+      <button type="submit">Adicionar</button>
+    </form>
+    <ul id="task-list"></ul>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
