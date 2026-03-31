@@ -1,6 +1,6 @@
 # Módulo 2: A Ponte IPC e o Estado
 
-Arquivo analisado: `/home/runner/work/aula-tauri/aula-tauri/todo-tauri/src-tauri/src/main.rs`
+Arquivo analisado: `todo-tauri/src-tauri/src/main.rs`
 
 ## Leitura do pedido, pontos que podem ser seguidos e ambiguidades
 
@@ -75,7 +75,7 @@ Saindo do template para o seu código final, a mudança é profunda:
 - o template costuma só provar que “JS chama Rust”;
 - o seu projeto prova algo mais importante: **JS pede, Rust decide, Rust sincroniza e Rust devolve um snapshot consistente**.
 
-Há ainda um detalhe interessante do repositório: o arquivo `/home/runner/work/aula-tauri/aula-tauri/todo-tauri/src-tauri/src/lib.rs` ainda preserva a casca do template com o comando `greet`, enquanto o `main.rs` concentra a implementação real da aplicação de tarefas. Isso é didaticamente útil porque mostra a transição do esqueleto inicial para o backend final.
+Há ainda um detalhe interessante do repositório: o arquivo `todo-tauri/src-tauri/src/lib.rs` ainda preserva a casca do template com o comando `greet`, enquanto o `main.rs` concentra a implementação real da aplicação de tarefas. Isso é didaticamente útil porque mostra a transição do esqueleto inicial para o backend final.
 
 ---
 
