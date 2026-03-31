@@ -1,4 +1,4 @@
-# Módulo 3: O Frontend, o `invoke` e a Renderização
+# Módulo 3: Montando o Projeto — Frontend TypeScript, `invoke` e Renderização
 
 Arquivo analisado: `todo-tauri/src/main.ts`
 

@@ -1,4 +1,4 @@
-# Módulo 1: Fundamentos, Arquitetura e Bootstrap do Tauri
+# Módulo 1: Montando o Projeto — Fundamentos, Arquitetura e Bootstrap do Tauri
 
 Arquivos analisados:
 
@@ -88,10 +88,10 @@ Ou, de forma ainda mais direta:
 
 A ordem didática natural agora fica assim:
 
-1. **Módulo 1** — fundamentos, estrutura e bootstrap do projeto;
-2. **Módulo 2** — backend Rust, comandos, `State` e `Mutex`;
-3. **Módulo 3** — frontend, `invoke`, eventos e renderização;
-4. **Módulo 4** — HTML e contrato do DOM.
+1. **Módulo 1** — fundamentos, arquitetura, toolchain e bootstrap do Tauri;
+2. **Módulo 2** — backend Rust, comandos IPC e estado global;
+3. **Módulo 3** — frontend TypeScript, `invoke` e renderização;
+4. **Módulo 4** — HTML, DOM e montagem da interface.
 
 Sem este módulo introdutório, os demais já começam no meio da história.
 

@@ -1,4 +1,4 @@
-# Módulo 2: A Ponte IPC e o Estado
+# Módulo 2: Montando o Projeto — Backend Rust, IPC e Estado Global
 
 Arquivo analisado: `todo-tauri/src-tauri/src/main.rs`
 

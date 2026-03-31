@@ -1,4 +1,4 @@
-# Módulo 4: O HTML, o Contrato do DOM e a Casca da Interface
+# Módulo 4: Montando o Projeto — HTML, DOM e Casca da Interface
 
 Arquivo analisado: `todo-tauri/index.html`
 
