@@ -54,6 +54,8 @@ Outra diferença importante: o estilo principal da tela foi colocado **inline** 
 
 Arquivo: `/home/runner/work/aula-tauri/aula-tauri/todo-tauri/index.html`
 
+Observação didática: o bloco abaixo reproduz **literalmente** o arquivo atual, inclusive a referência externa a jQuery, que deve ser lida em aula como um vestígio/anti-exemplo de endurecimento de superfície.
+
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -172,6 +174,8 @@ Ou seja, a principal diferença não é uma transformação interna do arquivo, 
 ### O Arquivo Completo
 
 Arquivo: `/home/runner/work/aula-tauri/aula-tauri/todo-tauri/src/styles.css`
+
+Observação didática: o bloco abaixo foi mantido **literalmente** para preservar o estado real do repositório, inclusive detalhes de formatação herdados do scaffold.
 
 ```css
 .logo.vite:hover {
