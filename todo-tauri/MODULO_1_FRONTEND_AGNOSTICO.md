@@ -124,11 +124,13 @@ Arquivo: `/home/runner/work/aula-tauri/aula-tauri/todo-tauri/index.html`
 
 ### Leitura crítica para aula
 
-Há um detalhe excelente para discutir em sala: existe um `<script>` externo de jQuery no final do arquivo, mas o código da aplicação não usa jQuery. Isso mostra três coisas:
+Há um detalhe excelente para discutir em sala: existe um `<script>` externo de jQuery no final do arquivo, mas o código da aplicação não usa jQuery. Além disso, ele aparece depois do `main.ts`, o que reforça que não participa do fluxo real da aplicação. Isso mostra três coisas:
 
 1. nem tudo que está no HTML participa da arquitetura de fato;
 2. dependência não utilizada aumenta superfície mental e pode aumentar superfície de ataque;
 3. em Tauri, a política de segurança depois pode impedir esse carregamento externo.
+
+Então, para a aula, a leitura correta não é “o app depende de jQuery”, mas sim “o repositório ainda carrega um vestígio que idealmente deveria ser removido para reduzir ruído e superfície de ataque”.
 
 Ou seja: o HTML já serve para introduzir o princípio de **mínimo privilégio** antes mesmo de falar de backend.
 
@@ -417,6 +419,11 @@ Esse arquivo já antecipa conceitos que serão aprofundados no Módulo 2 e no M�
 - a UI pede ao backend a lista “oficial”;
 - cada ação do usuário vira uma mensagem;
 - a atualização da tela ocorre depois da resposta do core.
+
+Também vale destacar dois detalhes de engenharia para leitura crítica:
+
+- `list.innerHTML = ""` prioriza clareza didática sobre micro-otimização; para uma lista pequena e um tutorial introdutório, isso deixa o redesenho fácil de explicar, embora APIs como `replaceChildren()` sejam alternativas mais refinadas;
+- `botaoExcluir.className = "delete-task"` funciona como marcador semântico, mesmo sem uma regra CSS correspondente no estado atual do projeto.
 
 Do ponto de vista conceitual, isso lembra bastante um cliente falando com um servidor — com a diferença de que, aqui, o “servidor” está no mesmo aplicativo, isolado por uma ponte IPC interna.
 
