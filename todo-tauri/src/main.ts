@@ -4,7 +4,6 @@ const form = document.getElementById("todo-form") as HTMLFormElement;
 const input = document.getElementById("task-input") as HTMLInputElement;
 const list = document.getElementById("task-list") as HTMLUListElement;
 
-// Raciocínio: Ao carregar a página (ou dar F5), busca as tarefas que estão na RAM do Rust
 window.addEventListener("DOMContentLoaded", async () => {
   try {
     const tarefas = await invoke<string[]>("carregar_tarefas");
@@ -21,7 +20,6 @@ form.addEventListener("submit", async (e) => {
   if (!taskText) return;
 
   try {
-    // Envia a nova tarefa e recebe a lista inteira atualizada de volta do Core
     const tarefasAtualizadas = await invoke<string[]>("adicionar_tarefa", { texto: taskText });
     renderizarLista(tarefasAtualizadas);
     input.value = "";
@@ -31,7 +29,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 function renderizarLista(tarefas: string[]) {
-  list.innerHTML = ""; // Limpa o DOM antes de redesenhar
+  list.innerHTML = ""; 
   tarefas.forEach((t, indice) => {
     const li = document.createElement("li");
 
