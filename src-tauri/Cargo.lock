@@ -4019,7 +4019,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "todo-tauri"
+name = "todolist-tauri"
 version = "0.1.0"
 dependencies = [
  "rand 0.10.0",
